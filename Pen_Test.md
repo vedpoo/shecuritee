@@ -17,7 +17,9 @@
   1. ssh demo1@10.50.12.237 -L 1111:10.208.50.61:80 
   2. 127.0.0.1:1111/classinfo.html
   
-# DAY 1 - PEN TESTING
+# Day 1 - LESSON 1-3 - PEN TESTING | Exploitation Research | Recon & Scanning
+
+# Pen Testing
   ## Phase 1: Mission
         -Scope of Mission
         -Determine valid targets (networks/machines)
@@ -36,11 +38,27 @@
       -Cover tracks
       -Exfiltrate target data
   ## Phase 6: Document/Report Mission
-    
-   
+
+  
+
+  # Network Recon & Scanning
+  ## Create Control Socket
+  ssh -MS /tmp/jump student@10.50.15.96
+    ### -M puts SSH into Master mode & multiplexing
+    ### -S creates socket in specified directory
+    ### Authenticate to jumpbox
+
+  ## Ping Sweep 
+  for i in {x..y}; do (ping -c 1 x.x.x.$i | grep "bytes from" &); done
+
+
+  ## Set up Dyanmic port forward
+  ssh -S /tmp/jump jump -O forward -D 9050
+
+  ## Scan targets found 
+  proxychains nmap <ip>
+  
   
     
     
  
-
-  
