@@ -90,6 +90,28 @@
 
   ## Port forward to newly found ports 
   ssh -S /tmp/t1 t1 -O forward -L 2111:<tgtip>:<tgt port> -L 2112:<tgtip>:<tgtport>
-    
+
+
+
+# WEB SCRAPER- only change http & authors
+  #!/usr/bin/env python
+  
+
+  import lxml.html
+  import requests
+
+
+  def main():
+
+
+  page = requests.get('http://quotes.toscrape.com')
+  tree = lxml.html.fromstring(page.content)
+
+
+  authors = tree.xpath('//small[@class="author"]/text()')
+
+
+  print ('Authors: ',authors)
+
     
  
