@@ -42,9 +42,11 @@
   
 
   # Network Recon & Scanning
+  
   ## Create Control Socket
   ssh -MS /tmp/jump student@10.50.15.96
    #### -M puts SSH into Master mode & multiplexing
+   
    #### -S creates socket in specified directory
    #### Authenticate to jumpbox
 
@@ -71,9 +73,23 @@
 #################################################################################################### 
 
   ## Create New Master Socket To New IP
-  ssh -MS /tmp/t1 username@127.0.0.1 -p 1112
-  
-  
+  ssh -MS /tmp/t1 username@127.0.0.1 -p <localportyousetup>
+
+  ## Thorugh recon found IP ex: 10.200.30.50, run a ping on jump box
+  Ping from t1 box: ping <10.200.30.50> ## it is up
+
+  ## Cancel dynamic port forward
+  ssh -S /tmp/jump jump -O cancel -D 9050
+
+  ## Set up port forwards on new master socket
+  ssh -S /tmp/t1 t1 -O forward -D 9050
+
+  ## Scan found target IP
+  proxychains nmap <target ip> |
+  verify open ports & services 
+
+  ## Port forward to newly found ports 
+  ssh -S /tmp/t1 t1 -O forward -L 2111:<tgtip>:<tgt port> -L 2112:<tgtip>:<tgtport>
     
     
  
