@@ -17,7 +17,7 @@
   1. ssh demo1@10.50.12.237 -L 1111:10.208.50.61:80 
   2. 127.0.0.1:1111/classinfo.html
   
-# Day 1: LESSON 1-3 - PEN TESTING | Exploitation Research | Recon & Scanning
+# Day 1: LESSON 1-3 - Pen Testing | Exploitation Research | Recon & Scanning
 
 # Pen Testing
   ## Phase 1: Mission
@@ -57,6 +57,21 @@
 
   ## Scan targets found 
   proxychains nmap <ip>
+
+  ## Banner Grab open ports, Verify port services
+  proxychains nc <ip> <port>
+  !Press enter key just in case to get more info
+
+  ## Set up local port forward to open port
+  ssh -S /tmp/jump jump -O forward -L 1111:<tgt_ip>:<tgt_port> -L 1112:<tgt_ip>:<tgt_port>
+
+  ## Use Firefox
+  127.0.0.1:<localportforward>
+
+#################################################################################################### 
+
+  ## Create New Master Socket To New IP
+  ssh -MS /tmp/t1 username@127.0.0.1 -p 1112
   
   
     
