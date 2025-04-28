@@ -9,7 +9,7 @@
   ### 10.50.171.186:8000  
   ### USER: VERA-016-F-M
   ### PW: PVQiqIOpn7K4
-  ### Jump:10.50.15.96
+  ### Jump: 10.50.15.96
   ### STACK#: 14
 
   ## For demonstrations
