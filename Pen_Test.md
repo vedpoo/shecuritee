@@ -17,7 +17,26 @@
   2. 127.0.0.1:1111/classinfo.html
   
 # DAY 1 - PEN TESTING
-  
+  ## Phase 1: Mission
+        -Scope of Mission
+        -Determine valid targets (networks/machines)
+        -Define RoE
+  ## Phase 2: Recon
+        -Public info gathering
+        -DO NOT TOUCH THE TARGET
+  ## Phase 3: Footprinting
+        -Scan network/targets
+  ## Phase 4: Exploitation/Initial Access
+        -Gain it
+  ## Phase 5: Post-exploitation
+      -Persistence
+      -Escalate priveleges
+      -Obfuscate
+      -Cover tracks
+      -Exfiltrate target data
+  ## Phase 6: Document/Report Mission
+    
+    
  
 
   
