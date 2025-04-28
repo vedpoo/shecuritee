@@ -44,9 +44,9 @@
   # Network Recon & Scanning
   ## Create Control Socket
   ssh -MS /tmp/jump student@10.50.15.96
-    ### -M puts SSH into Master mode & multiplexing
-    ### -S creates socket in specified directory
-    ### Authenticate to jumpbox
+   ### -M puts SSH into Master mode & multiplexing
+   ### -S creates socket in specified directory
+   ### Authenticate to jumpbox
 
   ## Ping Sweep 
   for i in {x..y}; do (ping -c 1 x.x.x.$i | grep "bytes from" &); done
