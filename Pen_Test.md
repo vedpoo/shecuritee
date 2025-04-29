@@ -183,6 +183,6 @@
            5. Run nmap: proxychains nmao 10.208.50.42
              6.Run nmap: proxychains nmap -sV --script=http-enum -p 80 10.208.50.42
                7. Create local forward to Web server: ssh -S /tmp/demo demo -O forward -L12344:10.208.50.42:80
-    
+    -
     
  
