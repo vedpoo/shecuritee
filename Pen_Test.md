@@ -16,8 +16,21 @@
   ## For demonstrations
   1. ssh demo1@10.50.12.237 -L 1111:10.208.50.61:80 
   2. 127.0.0.1:1111/classinfo.html
+
+
+
+
+
+
+
+
+
+
+
+
+
   
-# Day 1: LESSON 1-3 - Pen Testing | Exploitation Research | Recon & Scanning
+# Day 1: Pen Testing | Exploitation Research | Recon & Scanning
 
 ## Pen Testing
   ### Phase 1: Mission
@@ -115,7 +128,52 @@
 
 
 
-# DAY 2:
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# DAY 2: WEBEX Day 1
+
+## Web Fundamentals
+
+### HTTP 
+  -HTTP methods: OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+  -HTTP fields: Host, User-Agent, Referer, Accept-Language, Accept, Cookie, Content-Length
+
+### JavaScript
+  #### Demo: 
+    -
     
  
