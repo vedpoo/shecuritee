@@ -166,6 +166,7 @@
   
 -----------------------------------
 ### JavaScript
+  -Useful JavaScript components: Capturing Cookies | Capturing Keystrokes & Sensitive Data
   #### Demo: 
    ##### Getting Demo IP using methodology:
     -1. Demo IP: 10.50.13.128
@@ -176,8 +177,19 @@
     -5. Run nmap: proxychains nmao 10.208.50.42
     -6.Run nmap: proxychains nmap -sV --script=http-enum -p 80 10.208.50.42
     -7. Create local forward to Web server: ssh -S /tmp/demo demo -O forward -L12344:10.208.50.42:80
+    -8. Access local port through firefox
   ##### What did we learn:
     - Find suspicious Java script function
     - Run functions in console that you find inspect code
-    
- 
+
+---------------------------------------
+### Cross-Site Scripting (XSS)
+  -Types: Reflected vs. Stored
+#### Stored XSS
+  -Resides on vulnerable site
+  ##### Command Injection | ADD SEMICOLON ; and then command
+      -Run commands into areas of entry that arent meant for those commands.
+      -Cmds:; cat /etc/shadow, whoami, uname -a
+  
+  ##### Directory Traversal
+      -Write ../../../../../etc/passwd
