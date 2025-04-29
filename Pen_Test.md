@@ -156,14 +156,6 @@
 
 
 
-
-
-
-
-
-
-
-
 # DAY 2: WEBEX Day 1
 
 ## Web Fundamentals
@@ -171,18 +163,21 @@
 ### HTTP 
   -HTTP methods: OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
   -HTTP fields: Host, User-Agent, Referer, Accept-Language, Accept, Cookie, Content-Length
-
+  
+-----------------------------------
 ### JavaScript
   #### Demo: 
    ##### Getting Demo IP using methodology:
-    1. Demo IP: 10.50.13.128
-     2. Create Intial tunnel: ssh -MS /tmp/demo demo@10.50.13.128
+    -1. Demo IP: 10.50.13.128
+     -2. Create Intial tunnel: ssh -MS /tmp/demo demo@10.50.13.128
  -Use scanning methods
-      3. Website IP found: 10.208.50.42
-         4. Create Dynamic tunnel for nmap: ssh -S /tmp/demo demo -O forward -D9050
-           5. Run nmap: proxychains nmao 10.208.50.42
-             6.Run nmap: proxychains nmap -sV --script=http-enum -p 80 10.208.50.42
-               7. Create local forward to Web server: ssh -S /tmp/demo demo -O forward -L12344:10.208.50.42:80
-    -
+      -3. Website IP found: 10.208.50.42
+         -4. Create Dynamic tunnel for nmap: ssh -S /tmp/demo demo -O forward -D9050
+          -5. Run nmap: proxychains nmao 10.208.50.42
+            -6.Run nmap: proxychains nmap -sV --script=http-enum -p 80 10.208.50.42
+              -7. Create local forward to Web server: ssh -S /tmp/demo demo -O forward -L12344:10.208.50.42:80
+  ##### What did we learn:
+    - Find suspicious Java script function
+    - Run functions in console that you find inspect code
     
  
