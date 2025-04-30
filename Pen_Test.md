@@ -323,7 +323,7 @@
 
     -2. Identify # of columns/selections, utilizing UNION SELECT
       - Change URL- delete ( or 1=1 ) and replace with UNION SELECT # of columns presented
-        -ex: 127.0.0.1:1235/uniondemo.php?Selection=2 or 1=1 -> 127.0.0.1:1235/uniondemom.php?Selection=2 UNION SELECT 1,2,3
+        -ex: 127.0.0.1:1235/uniondemo.php?Selection=2 or 1=1 -> 127.0.0.1:1235/uniondemom.php?Selection=2 UNION SELECT 1,2,3 | can do UNION SELECT 1,2,@@version to view version
         -If did not present all possible columns, keep adding a new number
         -CHECK TO SEE IF COLUMNS ARE IN ORDER1`
 
