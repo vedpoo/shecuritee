@@ -231,4 +231,27 @@
       -7. Modify already made tunnel to hit the port 22 at end of -L
       -8. Run on own to query tunnel: ssh -i .ssh/id_rsa.pub user@127.0.0.1 -p RHP
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# DAY 3: WEBEX D2
+
+## SQL (Injections) 
+
+### SQL Demo
+     -1. Local forward to SQL Server: ssh demo1@10.50.12.237 -L 1235:10.208.50.61:80
+
       
