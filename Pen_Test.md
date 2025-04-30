@@ -249,9 +249,22 @@
 
 # DAY 3: WEBEX D2
 
-## SQL (Injections) 
+## SQL (Injections) - AKA Structured Query Language
+  - Create SQL queries
+  - Perform SQL Injections through GET & POST http commands
+### Standard SQL Commands
+  - SELECT
+  - UNION
+  - Add single quote ' to find input fields
 
-### SQL Demo
-     -1. Local forward to SQL Server: ssh demo1@10.50.12.237 -L 1235:10.208.50.61:80
+### SQL Credential/Authentication Bypass Dumping
+     - 1. Local forward to SQL Server: ssh demo1@10.50.12.237 -L 1235:10.208.50.61:80
+     - 2. Visit SQL page
+     - 3. INPUT ( tom' OR 1='1 ) into user & pw fields -DONT LOGIN YET
+     - 4. INSPECT. View network tab and NOW Login with creds while viewing network tab
+     - 5. GET and POST should pop up: Click POST request, right hand side click request - check what we inputted
+     - 6. Turn on Raw to turn POST into ONE line ( Called Request payload (should be one line)
+     - 7. Copy string, add ? to URL to intialize variable and PASTE string into URL and press ENTER
+      -8. Whatever the output, View Page Source
 
       
