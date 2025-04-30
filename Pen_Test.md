@@ -271,7 +271,7 @@
 ### SQL Inject Golden Rule Demo
      - 1. Golden Statement
        - table_schema,table_name,column_name from information_schema.columns
-       - <NAME OF COLUMN>,<NAME OF COLUMN>,<NAME OF COLUMN> from <NAME OF DATABASE>,<NAME OF TABLE>
+     - <NAME OF COLUMN>,<NAME OF COLUMN>,<NAME OF COLUMN> from <NAME OF DATABASE>,<NAME OF TABLE>
 
      - 2. Access SQL DBL
        -run: mysql
@@ -292,7 +292,7 @@
        -run: show columns from columns ;
        -Should now output table_schema, table_name, column_name
 
-  #### SQL INJECTION  on website
+  #### SQL INJECTION POST METHOD on website
 
      -1. Identify vulnerable field/selection
        -Use truth statement ( tom' OR 1='1 ) while replacing "tom" with the Selections given
@@ -310,8 +310,30 @@
        - KEEP TRACK OF TABLE FOR CRAFTING QUERIES
        -Database            Table               Column
 
-      -4. Craft our queries |  2 = column we cant see
-       -vulnerableselectionname' UNION SELECT nameofcyouwant,2,nameofc,nameofc,nameofc from database.Table
+      -4. Craft our queries |  2 = column we cant see, only change name of cyouWANT and database.Table
+       -vulnerableselectionname' UNION SELECT nameofcyouWANT,2,nameofc,nameofc,nameofc from database.Table
+
+
+   #### SQL INJECTION GET METHOD on website
+
+     -1. Idenitfy vulnerable field/selection
+       -Interact with GET REQUEST, test all selectionnames, and view the URL
+       -Add ( or 1 = 1 ) after the variable '?' or whatever shows signs of change.
+       -Change Url or selectionname and repeat until you get data back
+
+    -2. Identify # of columns/selections, utilizing UNION SELECT
+      - Change URL- delete ( or 1=1 ) and replace with UNION SELECT # of columns presented
+        -ex: 127.0.0.1:1235/uniondemo.php?Selection=2 or 1=1 -> 127.0.0.1:1235/uniondemom.php?Selection=2 UNION SELECT 1,2,3
+        -If did not present all possible columns, keep adding a new number
+        -CHECK TO SEE IF COLUMNS ARE IN ORDER1`
+
+    -3. Edit Golden Statement- ONLY CHANGE: 2 = column we cant see, 5 = total amount of columns you can query ( IMPORTANT )
+      -INPUT I=CHANGE INTO URL:127.0.0.1:1235/uniondemom.php?Selection=2 UNION SELECT 1,2,3 ->  UNION SELECT table_schema,table_name,column_name from information_schema.columns
+      -Change golden statment SELECTIONS if when identifying columns, you notice they are outputted in a different way ex, 1,3,2. ex. table_schema,table_name,column_name -> table_schema,column_name,table_name
+
+    -4. Craft our queries |  2 = column we cant see, only change name of cyouWANT and database.Table
+       -Put into URL 
+       -vulnerableselectionname' UNION SELECT nameofcyouWANT,nameofc,nameofc,nameofc from database.Table
 
 
       
