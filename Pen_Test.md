@@ -9,7 +9,7 @@
   ### 10.50.171.186:8000
   ---------------------------------
   ### Jump: 10.50.15.96
-  ### USER: VERA-016-F-M
+  ### USER: VERA-016-M
   ### PW: PVQiqIOpn7K4
   ### STACK#: 14
 
@@ -312,6 +312,7 @@
 
       -4. Craft our queries |  2 = column we cant see, only change name of cyouWANT and database.Table
        -vulnerableselectionname' UNION SELECT nameofcyouWANT,2,nameofc,nameofc,nameofc from database.Table
+       -PUT @@version into a field to see version
 
 
    #### SQL INJECTION GET METHOD on website
