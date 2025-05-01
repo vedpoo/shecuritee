@@ -337,4 +337,76 @@
        -vulnerableselectionname' UNION SELECT nameofcyouWANT,nameofc,nameofc,nameofc from database.Table
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Day 4: Reverse Engineering
+  ## X86_64 Assembly
+   ### 16 general purpose 64-Bit Registers
+     -EXAMPLE:
+       -%rax: first return register
+       -%rbp: the base pointer that keeps track of base of stack
+       -%rsp: the stack pointer that points to top of stack  
+       -EX: [%ebp=0x8]
+       
+  ### Common Terms
+    - HEAP
+    - STACK
+    - GENERAL REGISTER
+    - CONTROL REGISTER
+    - FLAGS REGISTER
+
+  ### Common INSTRUCTION POINTERS
+    - MOV  : move source to dest
+    - PUSH : push source onto stack
+    - POP  : pop top of stack to dest
+    - INC  : increment by 1
+    - DEC  : decrement by 1
+    - ADD  : add source to dest
+    - SUB  : subtract source from dest
+    - CMP  : Compare 2 values by subtracting them and setting the %RFLAGS register. ZeroFlag set means they are the same.
+    - JMP  : Jump to specified location
+    - JLE  : Jump if less than or eq
+    - JE   : Jump if eq
+
+
+  ### EXAMPLE ASSEMBLY PROBLEM
+
+    - main:
+        mov rax,16     # 16 moved into rax(16)
+        push rax       # push value rax(16) onto stack
+        jmp mem2       # jmp to mem2 memory location
+
+    - mem1:
+        mov rax, 0    # 0 (exit code) moved into rax
+        ret           # exit code 
+
+    - mem2:
+        pop r8        # pop r8(16) on the stack
+        cmp rax, r8   # rax(16) r8(16)
+        je mem1       # jump to mem1 if above equal
+
+
+  ## Reverse Engineer Workflow
+    - 1. Static
+    - 2. Behavioral
+    - 3. Dynamic
+    - 4. Disassembly
+    - 5. Document Findings
+
+
+
       
