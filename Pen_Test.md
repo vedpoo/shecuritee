@@ -479,6 +479,7 @@
       -Verify the program broke with the EIP:0x4141
 
     -12. Go to wiremask.eu & get 100 character string; replace offset with new string
+      -Run again
 
     -13. Plug EIP value into 'find the offset' in wiremask
 
@@ -486,7 +487,7 @@
           -a. Go back into code and replace offset: offset = "A" * new number
           -b. add line of code: eip = "BBBB"
           -c. add: print(offset+eip)
-          -d. make sure EIP = BBBB in output
+          -d. run again; make sure EIP = BBBB in output
 
     -15. run: shell
           -a. in regular shell run: env - gdb ./<name> (** ON TARGET **)
@@ -494,7 +495,7 @@
           -c. run: unset env COLUMNS (** ON TARGET **)
           -d. run: run (** ON TARGET **)
           -e. Ctrl + C to interrupt (** ON TARGET **)
-          -f. run: info proc map
+          -f. run: info proc map(** ON TARGET **)
           -g. Copy hex memory add of: line directly after heap | line of [stack]
           -h. run: find /b [line after heap],[line of stack], 0xff, 0xe4
           -i. Copy first 4 addresses, paste into py script as comments
@@ -509,6 +510,9 @@
          -b. Copy everything with buf = 
          -c. paste into script under nop
          -d. add + buf to print statement
+         
+      -17. RUN sudo -l to see on remote machines what are priveleges
+        `Run: run <<<$(python ./<name>.py)
           
           
 
