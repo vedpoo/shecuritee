@@ -512,6 +512,7 @@
          -d. add + buf to print statement
          
       -17. RUN sudo -l to see on remote machines what are priveleges
+          PUT stuff into /tmp for remote machines
         `Run: run <<<$(python ./<name>.py)
           
           
