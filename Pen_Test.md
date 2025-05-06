@@ -520,7 +520,49 @@
 
       
 
-      :
+
+
+
+
+
+
+
+
+
+
+# Day 6: Exploit Development - Windows
+
+## Demo
+  -1. cd C:\Users\student\downloads or wherever the downloaded files are
+  -2. Start static analysis
+    a. strings.exe -a -nobanner .\nameof.exe | select -first 10 
+      OR
+    b.strings.exe -a -n 7 -nobanner .\nameof.exe 
+
+  -3. Start Behavioral Analysis
+    a. Open Immunity as ADMIN > Run nameof.exe as ADMIN > File > Attach - NOTE PID DOWN > attach nameof.exe | Make sure exe is running. refresh attach while exe running to see it.
+      i. take note of the pid
+    b. Run: get-process | findstr /i (part of name.exe) match the PIDS
+    c. Run: netstat -anop tcp | findstr <PID>; see if something is listening
+    d. If PAUSE in bottom right, click play button to play in top left; should change to 'Running'
+    
+  -4. Create Script on linux machine 
+      -a. 
+
+  -5. Send/Run script while program is running AND immunity is running in bottom right on windows machine. EVERY TIME RUN SCRIPT -> RESTART/REWIND IMMUNITY AND EXE
+
+  -6. Slowly increase buf to see if overflow worked (overflow 4141 in EIP)
+
+  -7. Go to wiremask.com, input the number that you multiplied by A to get the overflow 4141 in EIP section in immunity, and paste it into replace the "A"
+
+  -8. Reset immunity and run script again with new BUF, copy new EIP value and input into 'Find the offset' in wiremask. Take that value and input revert back into the buf += 'A' * <number of offset>
+
+  -9. Add the buf += "BBBB" under the buf += "A", Look in immunity to see EIP = 4242 to verify worked
+
+  -10. Utulize Mone modules to search for unprotected DLLs
+    a. run  in bottom white of Immunity: !mona modules
+
+
 
 
 
