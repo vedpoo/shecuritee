@@ -646,4 +646,82 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Day 8: Windows Exploitation/Escalation
+
+-Check UAC settings in registry: reg query HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System
+-Find v
+
+ ## Task Scheduler 
+    -Check for running tasks
+    -Check Triggers and Action 
+    -Command line: schtasks /query /fo LIST /v
+
+  ## DLL Hijacking
+   -1. Download exe
+  ----not need for test
+   -2. Run procmon
+      -a. Filters:
+        i.Process Name contatins <nameofexe>
+        ii.Result is NAME NOT FOUND
+        iii. Path contains .dll
+      -b. Identify "SSPICLI.dll"
+      
+    -3. Make payload on LINOPScd : msfvenom -p windows/exec CMD='cmd.exe /C "whoami" > ls
+    C:\Users\student\Desktop\whoami.txt' -f dll > SSPICLI.dll
+
+    -4. Put file into new dir
+
+    -5. Host python server on linops: python3 -m http.server <RHP> 
+    
+    -6. Visit http server in WinOps: In google type in LinOps ip : port
+
+    -7. Download dll, place into same directory as previous dll
+
+    -8. Run putty(process) 
+
+  ## Persistence 
+  
+  ### Services
+    -1. Run Services
+    -2. Click Name & Description (LOOK FOR EMPTY DESCRIPTIONS AND SUS NAMES)
+
+  ### Registry 
+    -HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Run
+    -HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run
+    -HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\RunOnce
+    -HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\RunOnce
+
+ ## Cover Tracks
+ 
+  ### Log & Events
+  -Event Viewer Application
+    a.  Event viewer > click logs > Create a custom filte> Look at details
+  -Create Custom Views top right
+
+  ### Audit Logging
+  -Run: auditpol /get /category:* | findst /i "success failure"
+  - THIS COMMAND REQUIRES PERMISSIONS
+
+ 
+    
+
+
       
