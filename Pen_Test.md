@@ -786,16 +786,51 @@
 
 
 # Test Notes
+
+## Once in a box
  - Look at /etc/hosts whenever you can
  - For linux escalation: Look at sudo -l first, if doesnt work, go to suid or sguid bit exploit
 1. Once made ssh connection from linops to first target
 2. Enumerate: cat /etc/passwd for users , /etc/hosts for connections/dns , /etc/crontab for scheduled tasks, id, whoami, sudo -l
+3. Make sure to use http-enum on port 80
 
-# Priv Esc Lin
+## Priv Esc Lin
 sudo -l #  if binary found with sudo -l, use sudo option in gtfo bins
         #  if binary found with find command, use SUID option in gtfo bins
 SUID- Use find / -type (2000, 4000, 6000) to view available commands to run with our without sudo for higher permissions.
       -Run which command to see if commands are installed.
       -THERE WILL BE AN OBVIOUS BINARY TO USE IN SUID binaries, look at top and bottom 5
 
-# GDB
+  ## GDB
+      - If running on the remote machine, run regular disass without the 'p' or scp file over to use gdb peda like in the notes.
+       -disass main
+       
+## Directory Traversal/Command Injection
+ - If given option to input/search for things and output such like cat command: try to use   - ;<command>  - to test
+ - If does not work, try to /../../../../../../../etc/passwd & /etc/hosts
+
+## Malicious Upload 
+  - 3 conditions to meet in order to use:
+      1. Be able to upload
+      2. Be able to get to the upload
+      3. Has to be able run
+
+## SQL
+  ### Authentication Bypass
+    - 1. Local forward to SQL Server: ssh demo1@10.50.12.237 -L 1235:10.208.50.61:80
+     - 2. Visit SQL page
+     - 3. INPUT ( tom' OR 1='1 ) into user & pw fields -DONT LOGIN YET
+     - 4. INSPECT. View network tab and NOW Login with creds while viewing network tab
+     - 5. GET and POST should pop up: Click POST request, right hand side click request - check what we inputted
+     - 6. Turn on Raw to turn POST into ONE line ( Called Request payload (should be one line)
+     - 7. Copy string, add ? to URL to intialize variable and PASTE string into URL and press ENTER
+      -8. Whatever the output, View Page Source
+
+  ## Golden Statement, POST(User Input BOX) & GET(URL) method
+  1. Identify vuln field -
+  2. Identify number of columns with vuln field: UNION SELECT 1,2,3( can add more for fuzzing ), NOTIFY IF COLUMNS ARE SWITCHED 
+  3. U
+
+  ## Windows Priv esc | Visit TaskSched, Services ( No Descriptions:Click Description Filter), Registry Run Keys- look in notes, audit policies (auditpol)
+  - Go to TaskSched and find executable
+  - 
