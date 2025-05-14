@@ -780,3 +780,22 @@
       e.utmp
       f.wtmp
       g. Make sure you timestomp log: touch -c -t
+
+
+
+
+
+# Test Notes
+ - Look at /etc/hosts whenever you can
+ - For linux escalation: Look at sudo -l first, if doesnt work, go to suid or sguid bit exploit
+1. Once made ssh connection from linops to first target
+2. Enumerate: cat /etc/passwd for users , /etc/hosts for connections/dns , /etc/crontab for scheduled tasks, id, whoami, sudo -l
+
+# Priv Esc Lin
+sudo -l #  if binary found with sudo -l, use sudo option in gtfo bins
+        #  if binary found with find command, use SUID option in gtfo bins
+SUID- Use find / -type (2000, 4000, 6000) to view available commands to run with our without sudo for higher permissions.
+      -Run which command to see if commands are installed.
+      -THERE WILL BE AN OBVIOUS BINARY TO USE IN SUID binaries, look at top and bottom 5
+
+# GDB
