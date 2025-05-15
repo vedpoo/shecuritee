@@ -833,4 +833,11 @@ SUID- Use find / -type (2000, 4000, 6000) to view available commands to run with
 
   ## Windows Priv esc | Visit TaskSched, Services ( No Descriptions:Click Description Filter), Registry Run Keys- look in notes, audit policies (auditpol)
   - Go to TaskSched and find executable
+
   - 
+
+  ## NOTES- LOOK AT /ETC/SYSLOG
+  Stack Number 14
+  UN: VERA-016-M
+  PW: P1zWMuYTWEkS
+  jump: 10.50.16.10
