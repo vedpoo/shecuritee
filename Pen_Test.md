@@ -836,7 +836,7 @@ SUID- Use find / -type (2000, 4000, 6000) to view available commands to run with
 
   - 
 
-  ## NOTES- LOOK AT /ETC/SYSLOG
+# NOTES- LOOK AT /ETC/SYSLOG
   Stack Number 14
   UN: VERA-016-M
   PW: P1zWMuYTWEkS
